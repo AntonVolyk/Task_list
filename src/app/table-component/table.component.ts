@@ -1,7 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {Http, Response} from '@angular/http';
+import {Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {HttpService} from '../services/http.service';
+import {HighPriorityDirective} from '../directives/index';
+import {TaskComponent} from '../index';
+
 
 @Component({
   selector: 'table-component',
@@ -11,6 +14,8 @@ import {HttpService} from '../services/http.service';
 })
 export class TableComponent implements OnInit {
 	public tasks: object[];
+  public selectedTask: Object;
+  public isShowTask: boolean = false;
 
 	constructor(private httpService: HttpService) {}
 
@@ -20,4 +25,8 @@ export class TableComponent implements OnInit {
         });
 	}
 
+  public onClickTask(event: Event, task: Object):void {
+    this.isShowTask = !this.isShowTask;
+    this.selectedTask = task;
+  }
 }

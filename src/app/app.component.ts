@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { TableComponent } from './table-component/table.component';
-import '../assets/css/styles.css';
+import {Component} from '@angular/core';
+import {TableComponent} from './index';
 
 @Component({
   selector: 'app',

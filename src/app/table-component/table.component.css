@@ -1,3 +1,7 @@
 div.row {
   padding-top: 40px;
 }
+
+tr:hover {
+	font-size: 1.1em;
+}

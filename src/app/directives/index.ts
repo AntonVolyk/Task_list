@@ -1,0 +1,1 @@
+export {HighPriorityDirective} from './highPriority.directive';
