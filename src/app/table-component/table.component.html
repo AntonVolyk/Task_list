@@ -12,11 +12,11 @@
 		</thead>
 		<tbody>
 			<tr *ngFor="let item of tasks">
-				<td>{{item.name}}</td>
-				<td>{{item.tags}}</td>
-				<td>{{item.actual_effort}}</td>
-				<td>{{item.estimated_effort}}</td>
-				<td>{{item.due_date}}</td>
+				<td>{{item.name || '-'}}</td>
+				<td>{{item.tags || '-'}}</td>
+				<td>{{item.actual_effort || '-'}}</td>
+				<td>{{item.estimated_effort || '-'}}</td>
+				<td>{{item.due_date || '-'}}</td>
 			</tr>
 		</tbody>
   	</table>
