@@ -1,0 +1,15 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule }  from '@angular/platform-browser';
+import { HttpModule }   from '@angular/http';
+import { AppComponent, TableComponent } from './index';
+
+@NgModule({
+  imports: [
+    BrowserModule, HttpModule
+  ],
+  declarations: [
+    AppComponent, TableComponent
+  ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule { }
