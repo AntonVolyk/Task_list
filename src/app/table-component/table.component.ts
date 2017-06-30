@@ -5,7 +5,6 @@ import {HttpService} from '../services/http.service';
 import {HighPriorityDirective} from '../directives/index';
 import {TaskComponent} from '../index';
 
-
 @Component({
   selector: 'table-component',
   templateUrl: './table.component.html',
@@ -13,19 +12,19 @@ import {TaskComponent} from '../index';
   providers: [HttpService]
 })
 export class TableComponent implements OnInit {
-	public tasks: object[];
-  public selectedTask: Object;
+	public tasks: Task[];
+  public selectedTask: Task;
   public isShowTask: boolean = false;
 
 	constructor(private httpService: HttpService) {}
 
 	ngOnInit() {
 		this.httpService.getData().subscribe((data: Response) => {
-            this.tasks = data.json().filter((item: object) => item['obj_status'] === 'active');
+            this.tasks = data.json().filter((item: Task) => item['obj_status'] === 'active');
         });
 	}
 
-  public onClickTask(event: Event, task: Object):void {
+  public onClickTask(event: Event, task: Task):void {
     this.isShowTask = !this.isShowTask;
     this.selectedTask = task;
   }
