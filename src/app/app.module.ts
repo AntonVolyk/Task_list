@@ -7,9 +7,10 @@ import {HighPriorityDirective} from './directives/index';
 
 // routes settings
 const appRoutes: Routes =[
-    { path: 'table', component: TableComponent},
-    { path: 'task', component: TaskComponent}
-    { path: '**', component: TableComponent }
+    { path: '', component: TableComponent},
+    { path: 'task', component: TaskComponent},
+    { path: 'task/:name', component: TaskComponent},
+    { path: '**', redirectTo: '/' }
 ];
 
 @NgModule({

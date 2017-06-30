@@ -1,9 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {HttpService} from '../services/http.service';
 import {HighPriorityDirective} from '../directives/index';
 import {TaskComponent} from '../index';
+import { ActivatedRoute} from '@angular/router';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'table-component',
@@ -11,12 +13,14 @@ import {TaskComponent} from '../index';
   styleUrls: ['./table.component.css'],
   providers: [HttpService]
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, OnDestroy {
 	public tasks: Task[];
-  public selectedTask: Task;
-  public isShowTask: boolean = false;
+  private subscription: Subscription;
+  private id: number;
 
-	constructor(private httpService: HttpService) {}
+	constructor(private httpService: HttpService, private activateRoute: ActivatedRoute) {
+    this.subscription = activateRoute.params.subscribe(params=>this.id = params['id']);
+  }
 
 	ngOnInit() {
 		this.httpService.getData().subscribe((data: Response) => {
@@ -24,8 +28,12 @@ export class TableComponent implements OnInit {
         });
 	}
 
-  public onClickTask(event: Event, task: Task):void {
-    this.isShowTask = !this.isShowTask;
-    this.selectedTask = task;
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
+
+  public onClickTask(event: Event, task: Task):void {
+   
+  
+  }  
 }
