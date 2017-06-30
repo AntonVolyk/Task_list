@@ -1,17 +1,11 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule }  from '@angular/platform-browser';
-import { HttpModule }   from '@angular/http';
-import {Routes, RouterModule} from '@angular/router';
-import { AppComponent, TableComponent, TaskComponent} from './index';
+import {NgModule} from '@angular/core';
+import {BrowserModule}  from '@angular/platform-browser';
+import {HttpModule}   from '@angular/http';
+import {RouterModule} from '@angular/router';
+import {AppComponent, TableComponent, TaskComponent} from './index';
 import {HighPriorityDirective} from './directives/index';
+import {appRoutes} from './app.routes';
 
-// routes settings
-const appRoutes: Routes =[
-    { path: '', component: TableComponent},
-    { path: 'task', component: TaskComponent},
-    { path: 'task/:name', component: TaskComponent},
-    { path: '**', redirectTo: '/' }
-];
 
 @NgModule({
   imports: [
