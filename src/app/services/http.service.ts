@@ -29,13 +29,12 @@ export class HttpService {
     		}); 
     }
 
-    putData(item: Task) {
-        let headers = new Headers([{ 'Content-Type': 'application/json;charset=utf-8' }, 
-            { 'Content-Type': 'application/x-www-form-urlencoded' }]);
+    public putData(item: Task) {
+        let headers = new Headers([{ 'Content-Type': 'application/json;charset=utf-8' }]);
+        
         const body = JSON.stringify(item);
         
         return this.http.put('http://localhost:8080/addTask', body, {headers: headers})
-            .map((resp: Response) => resp.json())
             .catch((error:any) => Observable.throw(error)); 
     }
 }

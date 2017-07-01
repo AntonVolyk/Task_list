@@ -1,15 +1,31 @@
 <div class="container">
   <div class="row">
   	<div class="well well-lg">
-  		<p *ngIf="!isEdit" (click)="onEdit()">Name: {{task?.name}}</p>
-  		<div *ngIf="isEdit">
-  			<input type="text" [value]="task?.name">
-  			<a class="icon save" (click)="onSave()">
-  				<span class="glyphicon glyphicon-ok" aria-hidden=true></span> <span class=glyphicon-class></span>
-  			</a>
-  			<a class="icon cansel" (click)="onEdit()">
-  				<span class="glyphicon glyphicon-remove" aria-hidden=true></span> <span class=glyphicon-class></span>
-  			</a>
+    <a routerLink="" class="close">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>  
+      </a>
+      <ul>
+        <li *ngIf="!isEdit; else editor" (click)="onEdit()" class="editable">Name: {{task?.name}}</li>
+        <ng-template #editor>
+          <li>
+             <div>
+              <input #input type="text" [value]="task?.name">
+              <a class="icon save" (click)="onSave($event, input.value)">
+                <span class="glyphicon glyphicon-ok" aria-hidden=true></span> 
+                <span class=glyphicon-class></span>
+              </a>
+              <a class="icon cansel" (click)="onEdit()">
+                <span class="glyphicon glyphicon-remove" aria-hidden=true></span> 
+                <span class=glyphicon-class></span>
+              </a>
+            </div>
+          </li>
+        </ng-template>
+        <li>Description: {{task?.description}}</li>
+        <li>Due_date": {{task?.due_date | date:"dd/MM/yyyy" || '-'}}</li>
+        <li>Start_date": {{task?.start_date | date:"dd/MM/yyyy" || '-'}}</li>
+      </ul>
+  		
   	</div>
   </div>
 </div>

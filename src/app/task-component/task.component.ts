@@ -1,7 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {Router, ActivatedRoute, Params} from '@angular/router';
-import {Http, Response} from '@angular/http';
-import {Observable} from 'rxjs/Observable';
+import {ActivatedRoute, Params} from '@angular/router';
 import {HttpService} from '../services/http.service';
 
 
@@ -15,11 +13,7 @@ export class TaskComponent implements OnInit {
   public task: Task;
   public isEdit: boolean = false;
 
-  receivedTask: Task;
-  done: boolean = false;
-
-	constructor(private router: Router,
-      private activatedRoute: ActivatedRoute,
+	constructor(private activatedRoute: ActivatedRoute,
       private httpService: HttpService) {} 
 
   ngOnInit() {
@@ -31,10 +25,9 @@ export class TaskComponent implements OnInit {
       this.isEdit = !this.isEdit;
   }
 
-  public onSave() {
+  public onSave(event: Event, value: string) {
       this.onEdit();
-      
-      this.httpService.putData(this.task)
-        .subscribe((data) => {this.receivedTask = data; this.done = true;});
+      this.task.name = value;
+      this.httpService.putData(this.task).subscribe();
   }
 }
