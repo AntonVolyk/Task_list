@@ -4,8 +4,6 @@ import {Observable} from 'rxjs/Observable';
 import {HttpService} from '../services/http.service';
 import {HighPriorityDirective} from '../directives/index';
 import {TaskComponent} from '../index';
-
-//import {Subscription} from 'rxjs/Subscription';
 import {Router} from '@angular/router';
 
 @Component({
@@ -22,8 +20,8 @@ export class TableComponent implements OnInit {
       private router: Router) {}
 
 	ngOnInit() {
-		this.httpService.getData().subscribe((data: Response) => {
-        this.tasks = data.json().filter((item: Task) => item['obj_status'] === 'active')
+		this.httpService.getTaskList().subscribe(tasks => {
+        this.tasks = tasks.filter((x: Task) => x['obj_status'] === 'active')
     });
 	}
 

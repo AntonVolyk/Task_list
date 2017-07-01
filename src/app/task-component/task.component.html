@@ -1,8 +1,15 @@
 <div class="container">
   <div class="row">
   	<div class="well well-lg">
-  		<p>Name: {{task?.name}}</p>
+  		<p *ngIf="!isEdit" (click)="onEdit()">Name: {{task?.name}}</p>
+  		<div *ngIf="isEdit">
+  			<input type="text" [value]="task?.name">
+  			<a class="icon save" (click)="onSave()">
+  				<span class="glyphicon glyphicon-ok" aria-hidden=true></span> <span class=glyphicon-class></span>
+  			</a>
+  			<a class="icon cansel" (click)="onEdit()">
+  				<span class="glyphicon glyphicon-remove" aria-hidden=true></span> <span class=glyphicon-class></span>
+  			</a>
   	</div>
   </div>
 </div>
-

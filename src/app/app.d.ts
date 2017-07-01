@@ -15,3 +15,4 @@ declare interface Task{
   "tags"?: Array<string>,
   "is_high_priority"?: boolean
 }
+
