@@ -26,6 +26,6 @@ export class TableComponent implements OnInit {
 	}
 
   public onSelect(event: Event, task: Task):void {
-      this.router.navigate(['task', task.id]);
+    this.router.navigateByUrl(`/task/${task.id}`);
   }  
 }

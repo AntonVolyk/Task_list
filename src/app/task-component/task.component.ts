@@ -19,16 +19,15 @@ export class TaskComponent implements OnInit {
   ngOnInit() {
       this.httpService.getTask(parseInt(this.activatedRoute.snapshot.params['id']))
         .subscribe(x => this.task = x);
-
   } 
 
   public onEdit() {
       this.isEdit = !this.isEdit;
   }
 
-  public onSave(event: Event, value: string) {
+  public onSave(event: Event, name: string) {
       this.onEdit();
-      this.task.name = value;
+      this.task.name = name;
       this.httpService.putData(this.task).subscribe();
   }
 }
