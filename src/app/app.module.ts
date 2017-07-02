@@ -3,7 +3,7 @@ import {BrowserModule}  from '@angular/platform-browser';
 import {HttpModule}   from '@angular/http';
 import {RouterModule} from '@angular/router';
 import {AppComponent, TableComponent, TaskComponent} from './index';
-import {HighPriorityDirective} from './directives/index';
+import {HighPriorityDirective} from './directives/highPriority.directive';
 import {appRoutes} from './app.routes';
 
 

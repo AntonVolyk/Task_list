@@ -2,7 +2,7 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {HttpService} from '../services/http.service';
-import {HighPriorityDirective} from '../directives/index';
+export {HighPriorityDirective} from '../directives/highPriority.directive';
 import {TaskComponent} from '../index';
 import {Router} from '@angular/router';
 
